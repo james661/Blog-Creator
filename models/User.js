@@ -21,5 +21,6 @@ User.init({
   password: {
     type: DataTypes.STRING,
     allowNull: false,
+    maxLength: 20
   },
-})
+});
