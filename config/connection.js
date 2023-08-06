@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-
+// Set up connection with JAWSDB
 const sequelize = process.env.JAWSDB_URL
   ? new Sequelize(process.env.JAWSDB_URL)
   : new Sequelize(process.env.DB_NAME,

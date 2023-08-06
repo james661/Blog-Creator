@@ -5,7 +5,8 @@ class Comment extends Model { };
 
 Comment.init(
   {
-    body: DataTypes.STRING
+    body: DataTypes.STRING,
+    maxLength: 280
   },
   { sequelize }
 );
