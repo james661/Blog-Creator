@@ -1,0 +1,10 @@
+<div>
+  {{#each post as |post|}}
+  <div>
+    <h1>{{post.title}}</h1>
+    <h2>By {{post.user.username}}</h2>
+    <p>{{post.body}}</p>
+    <a href="/post/{{post.id}}">View Post</a>
+  </div>
+  {{/each}}
+</div>

@@ -1,0 +1,19 @@
+<div>
+  <div>
+    <h1>{{title}}</h1>
+    <h2>By {{user.username}}</h2>
+    <p>{{body}}</p>
+  </div>
+  <h3>Edit Post</h3>
+  <form>
+    <p>
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title" placeholder="{{title}}">
+    </p>
+    <p>
+      <label for="body">Body</label>
+      <textarea type="text" name="body" id="body" cols="20" rows="10" placeholder="{{body}}"></textarea>
+    </p>
+    <button id="edit">Edit a Post</button>
+  </form>
+</div>

@@ -18,6 +18,7 @@ router.get("/post/:id", withAuth, async (req, res) => {
     if (!postData) {
       res.status(500).end();
     }
+    // Serialize the post
     const post = postData.get({ plain: true });
     res.render("post", post);
   } catch (err) {
