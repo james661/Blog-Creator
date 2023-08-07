@@ -1,36 +1,44 @@
+require("dotenv").config();
 
-require('dotenv').config();
-const session = require('express-session');
-const expresshandle = require('express-handlebars');
-const express = require('express');
-const { join } = require('path');
+const express = require("express");
+const { join } = require("path");
+const session = require("express-session");
+const exphbs = require("express-handlebars");
 
 const app = express();
 
-app.use(express.urlencoded({extended: true}));
-app.use(express.json());
-app.use(express.static(join(__dirname, 'public')));
-app.engine('handlebars', handleBars.engine);
-app.set('view engine', 'handlebars');
-app.use(require('./controllers'));
+const sequelize = require("./config/connection");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
-const SeqStore = require('connect-session-sequelize')(session.Store)
-const handleBars = expresshandle.create({})
-
-app.use(session({
-  secret: '',
-  cookie: {
-    maxAge: 100000,
-    secure: false,
-    httpOnly: true,
-    sameSite: 'strict'
-  }
-  saveUnitialized: true,
-  resave: false,
-  store: new SeqStore({
-    db: sequelize
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    cookie: {
+      maxAge: 100000,
+      httpOnly: true,
+      secure: false,
+      sameSite: "strict",
+    },
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({
+      db: sequelize,
+    }),
   })
-}));
+);
 
-sequelize.sync({ force: false })
-app.listen(3001);
+const hbs = exphbs.create({});
+
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(join(__dirname, "public")));
+
+app.use(require("./controllers"));
+
+sequelize
+  .sync({ force: false })
+  .then(() => app.listen(3001))
+  .catch((err) => console.error(err));
