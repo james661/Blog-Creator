@@ -1,8 +1,6 @@
 <div>
-  <button id="logOutUser">LogOut</button>
-  <hr>
-  <hr>
-  <h5>Create A Post</h5>
+  <button id="logOutUser">LogOut Here</button>
+  <h1>Create A Post</h1>
   <form>
     <p>
       <label for="title">Title</label>
@@ -12,19 +10,16 @@
       <label for="body">Body</label>
       <textarea name="body" id="body" cols="20" rows="10"></textarea>
     </p>
-    <button id="createPost">create</button>
+    <button id="createPost">Create Post</button>
   </form>
-  <hr>
   {{#each posts as |post|}}
-  <hr>
   <div>
     <h3>{{post.title}}</h3>
-    <h5>Created by {{post.user.username}}</h5>
+    <h3>Created by {{post.user.username}}</h3>
     <p>{{post.body}}</p>
     <a href="/post/{{post.id}}">View Post</a>
   </div>
-  <hr>
   {{/each}}
 </div>
 
-<script src="./js/createPost.js"></script>
+<script src="/public/js/createPost.js"></script>

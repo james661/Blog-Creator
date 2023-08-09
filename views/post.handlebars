@@ -1,12 +1,9 @@
 <div>
-  <hr>
   <div>
-    <h3>{{title}}</h3>
-    <h5>Created by {{user.username}}</h5>
+    <h2>{{title}}</h2>
+    <h3>Created by {{user.username}}</h3>
     <p>{{body}}</p>
   </div>
-  <hr>
-  <hr>
   <h5>Edit Post</h5>
   <form>
     <p>
@@ -20,8 +17,6 @@
     <button id="editPost" data-id="{{id}}">Edit Post</button>
   </form>
   <button id="deletePost" data-id="{{id}}">Delete Post</button>
-  <hr>
   <a href="/">Back</a>
 </div>
-
-<script src="/js/edit.js"></script>
+<script src="/public/js/edit.js"></script>
