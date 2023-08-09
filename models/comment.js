@@ -37,3 +37,4 @@ Comment.init(
 );
 
 module.exports = Comment;
+console.log(1);
