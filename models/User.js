@@ -7,7 +7,7 @@ class User extends Model {
     return bcrypt.compareSync(password, this.password)
   }
 };
-
+// Schema for the users
 User.init({
   id: {
     type: DataTypes.INTEGER,

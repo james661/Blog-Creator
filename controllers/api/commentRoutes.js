@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Post, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
-
+// Comment routes for creating and deleting
 router.post('/', withAuth, async (req,res) => {
   try {
     const { comment_text, post_id } = req.body;

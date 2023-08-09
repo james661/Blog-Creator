@@ -1,3 +1,4 @@
+// Require the necessary dependencies
 require("dotenv").config();
 
 const express = require("express");
@@ -37,7 +38,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(join(__dirname, "public")));
 
 app.use(require("./controllers"));
-
+// Set up the port
 sequelize
   .sync({ force: false })
   .then(() => app.listen(3005, () => {

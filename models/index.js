@@ -1,7 +1,7 @@
 const Post = require('./Post');
 const User = require('./User');
 const Comment = require('./Comment');
-
+// Schema relationships
 User.hasMany(Post, {
   foreignKey: "user_id",
 });

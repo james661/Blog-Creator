@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Post extends Model {};
-
+// Schema for posts
 Post.init({
   id: {
     type: DataTypes.INTEGER,
