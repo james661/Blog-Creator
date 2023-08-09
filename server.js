@@ -8,7 +8,7 @@ const exphbs = require("express-handlebars");
 
 const app = express();
 
-const sequelize = require("./config/connection");
+const sequelize = require("./config");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 app.use(
@@ -41,7 +41,9 @@ app.use(require("./controllers"));
 // Set up the port
 sequelize
   .sync({ force: false })
-  .then(() => app.listen(3005, () => {
-    console.log(`Listening on http://localhost:3005`)
-  }))
+  .then(() =>
+    app.listen(3005, () => {
+      console.log(`Listening on http://localhost:3005`);
+    })
+  )
   .catch((err) => console.error(err));
