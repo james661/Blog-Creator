@@ -1,10 +1,13 @@
 <div>
+  <hr>
   <div>
-    <h1>{{title}}</h1>
-    <h2>By {{user.username}}</h2>
+    <h3>{{title}}</h3>
+    <h5>Created by {{user.username}}</h5>
     <p>{{body}}</p>
   </div>
-  <h3>Edit Post</h3>
+  <hr>
+  <hr>
+  <h5>Edit Post</h5>
   <form>
     <p>
       <label for="title">Title</label>
@@ -12,8 +15,13 @@
     </p>
     <p>
       <label for="body">Body</label>
-      <textarea type="text" name="body" id="body" cols="20" rows="10" placeholder="{{body}}"></textarea>
+      <textarea name="body" id="body" cols="30" rows="10" placeholder="{{body}}"></textarea>
     </p>
-    <button id="edit">Edit a Post</button>
+    <button id="editPost" data-id="{{id}}">Edit Post</button>
   </form>
+  <button id="deletePost" data-id="{{id}}">Delete Post</button>
+  <hr>
+  <a href="/">Back</a>
 </div>
+
+<script src="/js/edit.js"></script>

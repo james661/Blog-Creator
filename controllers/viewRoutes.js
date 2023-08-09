@@ -1,12 +1,20 @@
-const router = require('express').Router();
-const { User, Post } = require('../models');
-const withAuth = require('../utils/auth');
+const router = require("express").Router();
+const { User, Post } = require("../models");
+const withAuth = require("../utils/auth");
 // Route to find all posts
-router.get('/', withAuth, async (req, res) => {
+router.get("/login", async (req, res) => {
+  try {
+    res.render("home");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/", async (req, res) => {
   try {
     const postData = await Post.findAll({ include: [User] });
-    const posts = postData.map(post => post.get({ plain: true }));
-    res.render('home', { posts });
+    const posts = postData.map((post) => post.get({ plain: true }));
+    res.render("home", { posts });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -26,12 +34,12 @@ router.get("/post/:id", withAuth, async (req, res) => {
   }
 });
 // Route to login once the password is accepted
-router.get("/auth", (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect("/");
-    return;
-  }
-  res.render("auth");
-});
+// router.get("/auth", (req, res) => {
+//   if (req.session.loggedIn) {
+//     res.redirect("/");
+//     return;
+//   }
+//   res.render("auth");
+// });
 
 module.exports = router;

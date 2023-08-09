@@ -40,5 +40,7 @@ app.use(require("./controllers"));
 
 sequelize
   .sync({ force: false })
-  .then(() => app.listen(3001))
+  .then(() => app.listen(3005, () => {
+    console.log(`Listening on http://localhost:3005`)
+  }))
   .catch((err) => console.error(err));
